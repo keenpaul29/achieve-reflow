@@ -45,7 +45,7 @@ export function Features() {
             Our Features
           </span>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Why Choose <span className="text-gradient">Vwalbot</span>?
+            Why Choose <span className="text-gradient">Wwallbot</span>?
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Everything you need to succeed in the financial markets, 
@@ -53,22 +53,22 @@ export function Features() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch auto-rows-fr">
           {features.map((feature, index) => (
-            <Card 
+            <Card
               key={feature.title}
-              className="group hover-lift border-2 border-primary/10 hover:border-primary/30 bg-card/80 backdrop-blur-sm animate-fade-up"
+              className="group hover-lift border-2 border-primary/10 hover:border-primary/30 bg-card/80 backdrop-blur-sm animate-fade-up flex flex-col h-full overflow-hidden min-h-[220px]"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <CardHeader className="space-y-4">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-primary/20">
+              <CardHeader className="space-y-4 pt-6 px-6">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center transition-transform duration-300 border border-primary/20 group-hover:scale-110">
                   <feature.icon className="h-7 w-7 text-primary" />
                 </div>
-                <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                <CardTitle className="text-xl transition-colors group-hover:text-primary">
                   {feature.title}
                 </CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="px-6 pb-6 mt-auto">
                 <CardDescription className="text-base leading-relaxed">
                   {feature.description}
                 </CardDescription>

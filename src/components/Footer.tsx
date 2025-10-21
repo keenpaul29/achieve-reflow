@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 import { useTheme } from "@/components/ThemeProvider";
-import logoDark from "@/assets/logo-dark.png";
-import logoLight from "@/assets/logo-light.png";
+
 
 export function Footer() {
   const { theme } = useTheme();
@@ -35,45 +34,43 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-gradient-to-b from-muted/30 to-muted/50 border-t border-primary/10 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(28,141,190,0.08),transparent_50%)]" />
-      
-      <div className="container mx-auto px-4 py-16 relative">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-16">
-          <div className="col-span-2">
-            <img 
-              src={theme === "dark" ? logoLight : logoDark} 
-              alt="Vwalbot" 
+    <footer className="bg-card border-t border-border">
+      <div className="container mx-auto px-4 py-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mb-12">
+          <div className="col-span-2 lg:col-span-2">
+            <img
+              src={theme === "dark" ? "/logo-light.png" : "/logo-dark.png"}
+              alt="Achieve Reflow"
               className="h-10 w-auto mb-6"
             />
-            <p className="text-sm text-muted-foreground mb-6 max-w-xs leading-relaxed">
-              Trade smart, grow fast. Your trusted partner in financial markets with cutting-edge technology and expert support.
+            <p className="text-sm text-muted-foreground mb-6 max-w-xs">
+              A leading forex broker dedicated to providing top-tier trading services and support.
             </p>
-            <div className="flex gap-3">
-              <a href="#" className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/20 transition-all duration-300">
-                <Facebook className="h-5 w-5" />
+            <div className="flex gap-4">
+              <a href="#" className="text-muted-foreground hover:text-primary">
+                <FaFacebookF size={20} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/20 transition-all duration-300">
-                <Twitter className="h-5 w-5" />
+              <a href="#" className="text-muted-foreground hover:text-primary">
+                <FaTwitter size={20} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/20 transition-all duration-300">
-                <Linkedin className="h-5 w-5" />
+              <a href="#" className="text-muted-foreground hover:text-primary">
+                <FaLinkedinIn size={20} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/20 transition-all duration-300">
-                <Instagram className="h-5 w-5" />
+              <a href="#" className="text-muted-foreground hover:text-primary">
+                <FaInstagram size={20} />
               </a>
             </div>
           </div>
 
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="font-bold mb-4 text-foreground">{category}</h4>
+              <h4 className="font-semibold mb-4 text-foreground">{category}</h4>
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.name}>
-                    <Link 
-                      to={link.path} 
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300"
+                    <Link
+                      to={link.path}
+                      className="text-sm text-muted-foreground hover:text-primary"
                     >
                       {link.name}
                     </Link>
@@ -84,14 +81,13 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="pt-8 border-t border-primary/20">
+        <div className="pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Vwalbot. All rights reserved.
+              © {new Date().getFullYear()} Achieve Reflow. All rights reserved.
             </p>
-            <p className="text-xs text-muted-foreground max-w-2xl text-center md:text-right leading-relaxed">
-              Risk Warning: Trading in financial markets involves substantial risk and may not be suitable for all investors. 
-              Past performance is not indicative of future results.
+            <p className="text-xs text-muted-foreground max-w-lg text-center md:text-right">
+              Risk Warning: Trading foreign exchange on margin carries a high level of risk, and may not be suitable for all investors.
             </p>
           </div>
         </div>

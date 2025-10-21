@@ -5,121 +5,95 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 export function TradingAccounts() {
   const accounts = [
     {
-      name: "Starter",
-      price: "$0",
-      description: "Perfect for beginners",
+      name: "Standard Account",
+      price: "$100",
+      description: "Ideal for new traders entering the forex market.",
       features: [
-        "Demo account access",
-        "Basic educational resources",
-        "Email support",
-        "Mobile app access",
-        "5 market instruments"
+        "Access to 25+ currency pairs",
+        "Leverage up to 1:500",
+        "Spreads from 1.2 pips",
+        "24/5 customer support",
+        "Educational webinars and tutorials"
       ],
       popular: false
     },
     {
-      name: "Professional",
-      price: "$500",
-      description: "For serious traders",
+      name: "Pro Account",
+      price: "$1,000",
+      description: "For experienced traders seeking advanced features.",
       features: [
-        "All Starter features",
-        "Advanced charting tools",
-        "Priority support 24/7",
-        "50+ market instruments",
-        "Lower spreads",
-        "Personal account manager"
+        "Access to 50+ currency pairs",
+        "Raw spreads from 0.0 pips",
+        "Commission from $3.50 per lot",
+        "Dedicated account manager",
+        "Advanced trading tools and indicators"
       ],
       popular: true
     },
     {
-      name: "Elite",
-      price: "$5,000",
-      description: "Maximum performance",
+      name: "VIP Account",
+      price: "$10,000",
+      description: "Exclusive benefits for high-volume traders.",
       features: [
-        "All Professional features",
-        "Institutional-grade tools",
-        "VIP support",
-        "Unlimited instruments",
-        "Lowest spreads",
-        "Dedicated account manager",
-        "Exclusive market insights"
+        "Access to all currency pairs, indices, and commodities",
+        "Customizable leverage",
+        "Zero commission on trades",
+        "Personalized trading strategies",
+        "Invitations to exclusive events"
       ],
       popular: false
     }
   ];
 
   return (
-    <section className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
-      
-      <div className="container mx-auto px-4 relative">
-        <div className="text-center mb-20 animate-fade-up">
-          <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
-            Account Types
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Choose Your <span className="text-gradient">Trading Account</span>
+    <section className="py-28 bg-background">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl md:text-6xl font-extrabold mb-6 text-foreground">
+            Choose Your <span className="text-primary">Trading Account</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Select the perfect account type that matches your trading goals and experience level
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            We offer a range of account types to suit every trader, from novice to professional.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {accounts.map((account, index) => (
-            <Card 
+        <div className="grid md:grid-cols-3 gap-8">
+          {accounts.map((account) => (
+            <Card
               key={account.name}
-              className={`relative overflow-hidden animate-fade-up ${
-                account.popular 
-                  ? "border-2 border-primary shadow-2xl shadow-primary/20 scale-105 bg-gradient-to-b from-primary/5 to-transparent" 
-                  : "border-2 border-primary/10 hover-lift"
-              }`}
-              style={{ animationDelay: `${index * 100}ms` }}
+              className={`flex flex-col rounded-xl border ${
+                account.popular
+                  ? "border-primary shadow-2xl shadow-primary/10"
+                  : "border-border"
+              } bg-card transition-all duration-300 hover:shadow-lg hover:-translate-y-2`}
             >
-              {account.popular && (
-                <>
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-                    <span className="bg-gradient-to-r from-primary to-accent text-primary-foreground px-5 py-2 rounded-full text-sm font-bold shadow-lg">
-                      ⭐ Most Popular
-                    </span>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/5 pointer-events-none" />
-                </>
-              )}
-              
-              <CardHeader className="text-center pb-8 pt-10 relative">
-                <CardTitle className="text-2xl mb-4">{account.name}</CardTitle>
-                <div className="mb-3">
-                  <span className="text-5xl font-bold bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent">
-                    {account.price}
-                  </span>
-                  <span className="text-muted-foreground block mt-2 text-sm font-medium">
-                    minimum deposit
-                  </span>
-                </div>
-                <CardDescription className="text-base">{account.description}</CardDescription>
+              <CardHeader className="text-center border-b border-border pb-6">
+                <CardTitle className="text-2xl font-bold">{account.name}</CardTitle>
+                <CardDescription>{account.description}</CardDescription>
               </CardHeader>
-              
-              <CardContent className="space-y-6">
-                <ul className="space-y-3.5">
+              <CardContent className="flex-grow p-8">
+                <div className="text-center mb-8">
+                  <span className="text-5xl font-extrabold text-primary">{account.price}</span>
+                  <span className="text-muted-foreground">/min deposit</span>
+                </div>
+                <ul className="space-y-4">
                   {account.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3">
-                      <div className="mt-0.5 p-0.5 rounded-full bg-primary/20">
-                        <Check className="h-4 w-4 text-primary" />
-                      </div>
-                      <span className="text-sm leading-relaxed">{feature}</span>
+                    <li key={feature} className="flex items-center gap-3">
+                      <Check className="h-5 w-5 text-green-500" />
+                      <span className="text-foreground">{feature}</span>
                     </li>
                   ))}
                 </ul>
-                
-                <Button 
-                  className="w-full" 
+              </CardContent>
+              <div className="p-8 pt-0">
+                <Button
+                  className="w-full"
                   size="lg"
                   variant={account.popular ? "default" : "outline"}
                 >
-                  Open Account
+                  Get Started
                 </Button>
-              </CardContent>
+              </div>
             </Card>
           ))}
         </div>

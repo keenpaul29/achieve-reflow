@@ -3,8 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/ThemeProvider";
-import logoDark from "@/assets/logo-dark.png";
-import logoLight from "@/assets/logo-light.png";
+
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,43 +20,40 @@ export function Navigation() {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-xl border-b border-border/50 shadow-lg shadow-primary/5">
+    <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-lg border-b border-border">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24">
           <Link to="/" className="flex items-center space-x-2 group">
             <img 
-              src={theme === "dark" ? logoLight : logoDark} 
-              alt="Vwalbot" 
-              className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
+              src={theme === "dark" ? '/logo-light.png' : '/logo-dark.png'} 
+              alt="Achieve Reflow" 
+              className="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden md:flex items-center space-x-4">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`relative px-4 py-2 text-sm font-semibold transition-all duration-300 rounded-lg ${
-                  isActive(item.path) 
-                    ? "text-primary bg-primary/10" 
-                    : "text-muted-foreground hover:text-primary hover:bg-primary/5"
+                className={`text-lg font-semibold transition-colors duration-300 ${
+                  isActive(item.path)
+                    ? "text-primary"
+                    : "text-foreground hover:text-primary"
                 }`}
               >
                 {item.name}
-                {isActive(item.path) && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-0.5 bg-gradient-to-r from-primary to-accent rounded-full" />
-                )}
               </Link>
             ))}
           </div>
 
-          <div className="hidden md:flex items-center space-x-3">
+          <div className="hidden md:flex items-center space-x-4">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="rounded-lg"
+              className="rounded-full"
             >
               {theme === "dark" ? (
                 <Sun className="h-5 w-5" />
@@ -65,8 +61,8 @@ export function Navigation() {
                 <Moon className="h-5 w-5" />
               )}
             </Button>
-            <Button variant="outline" size="default">Login</Button>
-            <Button size="default">Get Started</Button>
+            <Button variant="outline" size="sm">Login</Button>
+            <Button size="sm">Open Account</Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -108,9 +104,9 @@ export function Navigation() {
                   {item.name}
                 </Link>
               ))}
-              <div className="flex flex-col space-y-2 pt-4">
+              <div className="flex flex-col space-y-3 pt-4">
                 <Button variant="outline" className="w-full">Login</Button>
-                <Button className="w-full">Get Started</Button>
+                <Button className="w-full">Open Account</Button>
               </div>
             </div>
           </div>
