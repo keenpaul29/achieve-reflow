@@ -36,33 +36,40 @@ export function Features() {
   ];
 
   return (
-    <section className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-up">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Why Choose Vwalbot?
+    <section className="py-24 bg-muted/30 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(28,141,190,0.08),transparent_70%)]" />
+      
+      <div className="container mx-auto px-4 relative">
+        <div className="text-center mb-20 animate-fade-up">
+          <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
+            Our Features
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Why Choose <span className="text-gradient">Vwalbot</span>?
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Everything you need to succeed in the financial markets, 
             all in one powerful platform
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <Card 
               key={feature.title}
-              className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 animate-fade-up"
+              className="group hover-lift border-2 border-primary/10 hover:border-primary/30 bg-card/80 backdrop-blur-sm animate-fade-up"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <CardHeader>
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <feature.icon className="h-6 w-6 text-primary" />
+              <CardHeader className="space-y-4">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-primary/20">
+                  <feature.icon className="h-7 w-7 text-primary" />
                 </div>
-                <CardTitle className="text-xl">{feature.title}</CardTitle>
+                <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                  {feature.title}
+                </CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-base">
+                <CardDescription className="text-base leading-relaxed">
                   {feature.description}
                 </CardDescription>
               </CardContent>

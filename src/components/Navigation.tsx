@@ -21,37 +21,43 @@ export function Navigation() {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-lg border-b border-border">
+    <nav className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-xl border-b border-border/50 shadow-lg shadow-primary/5">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center space-x-2">
+        <div className="flex items-center justify-between h-20">
+          <Link to="/" className="flex items-center space-x-2 group">
             <img 
               src={theme === "dark" ? logoLight : logoDark} 
               alt="Vwalbot" 
-              className="h-8 w-auto"
+              className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  isActive(item.path) ? "text-primary" : "text-muted-foreground"
+                className={`relative px-4 py-2 text-sm font-semibold transition-all duration-300 rounded-lg ${
+                  isActive(item.path) 
+                    ? "text-primary bg-primary/10" 
+                    : "text-muted-foreground hover:text-primary hover:bg-primary/5"
                 }`}
               >
                 {item.name}
+                {isActive(item.path) && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-0.5 bg-gradient-to-r from-primary to-accent rounded-full" />
+                )}
               </Link>
             ))}
           </div>
 
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-3">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="rounded-lg"
             >
               {theme === "dark" ? (
                 <Sun className="h-5 w-5" />
@@ -59,8 +65,8 @@ export function Navigation() {
                 <Moon className="h-5 w-5" />
               )}
             </Button>
-            <Button variant="outline">Login</Button>
-            <Button>Get Started</Button>
+            <Button variant="outline" size="default">Login</Button>
+            <Button size="default">Get Started</Button>
           </div>
 
           {/* Mobile Menu Button */}
