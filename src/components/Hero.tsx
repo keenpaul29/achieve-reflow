@@ -2,6 +2,7 @@ import { ArrowRight, TrendingUp, Shield, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
+import { useRef } from "react";
 
 export function Hero() {
   const features = [
@@ -15,6 +16,14 @@ export function Hero() {
     { pair: "GBP/USD", value: "1.2634", change: "+0.18%" },
     { pair: "USD/JPY", value: "149.82", change: "-0.15%" },
   ];
+
+  const scrollToFeatures = () => {
+    const featuresSection = document.getElementById('features-section');
+    featuresSection?.scrollIntoView({ 
+      behavior: "smooth",
+      block: "start"
+    });
+  };
 
   return (
     <section className="relative pt-36 pb-24 overflow-hidden">
@@ -38,13 +47,13 @@ export function Hero() {
           className="text-center"
         >
           <motion.div 
-            className="inline-block bg-primary/10 text-primary font-semibold px-4 py-2 rounded-full text-sm border border-primary/20 shadow-sm"
+            className="inline-block bg-primary/10 text-primary font-semibold px-4 py-2 rounded-full text-sm border border-primary/10 backdrop-blur-sm"
             whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
           >
             ✨ Trade Smart. Grow Fast.
           </motion.div>
           
-          <h1 className="mt-6 text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white">
+          <h1 className="mt-6 text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white">
             Elevate Your Trading
             <span className="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary-foreground animate-gradient-x">
               With Smarter Tools
@@ -60,7 +69,12 @@ export function Hero() {
               Start Trading Now
               <ArrowRight className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-1.5" />
             </Button>
-            <Button size="lg" variant="outline" className="px-8 py-4 text-lg font-bold border-2 border-white/80 text-white hover:bg-white/10 hover:text-white">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="px-8 py-4 text-lg font-bold border-2 border-white/80 text-white hover:bg-white/10 hover:text-white" 
+              onClick={scrollToFeatures}
+            >
               Explore Features
             </Button>
           </div>
