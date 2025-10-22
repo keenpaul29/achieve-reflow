@@ -1,4 +1,4 @@
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Star, Zap, Crown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -17,7 +17,9 @@ export function TradingAccounts() {
         "24/5 customer support",
         "Educational webinars"
       ],
-      popular: false
+      popular: false,
+      icon: Star,
+      gradient: "from-blue-500/20 to-cyan-500/20"
     },
     {
       name: "Pro",
@@ -30,7 +32,9 @@ export function TradingAccounts() {
         "Dedicated account manager",
         "Advanced trading tools"
       ],
-      popular: true
+      popular: true,
+      icon: Zap,
+      gradient: "from-primary/30 to-primary/10"
     },
     {
       name: "VIP",
@@ -43,7 +47,9 @@ export function TradingAccounts() {
         "Personalized strategies",
         "Exclusive event invitations"
       ],
-      popular: false
+      popular: false,
+      icon: Crown,
+      gradient: "from-amber-500/20 to-orange-500/20"
     }
   ];
 
@@ -61,74 +67,90 @@ export function TradingAccounts() {
   };
 
   return (
-    <section className="py-24 bg-muted/20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(28,141,190,0.1),transparent_40%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(28,141,190,0.1),transparent_40%)]" />
-      <div className="container mx-auto px-4 relative">
+    <section className="py-12 sm:py-16 md:py-20 bg-background relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Find the <span className="text-gradient">Perfect Account</span> for You
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-foreground px-4">
+            Choose Your Trading Account
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            We offer a range of account types to suit every trader, from novice to professional.
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
+            Select the perfect account type for your trading needs and experience level.
           </p>
         </motion.div>
 
         <motion.div 
-          className="grid lg:grid-cols-3 gap-8 items-stretch"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 items-stretch max-w-7xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {accounts.map((account) => (
-            <motion.div key={account.name} variants={itemVariants} className="h-full">
-              <Card
-                className={`flex flex-col h-full rounded-2xl bg-card/60 backdrop-blur-lg border relative overflow-hidden transition-all duration-300 group hover:shadow-2xl ${
-                  account.popular
-                    ? "border-primary/50 hover:border-primary/80 shadow-primary/20"
-                    : "border-border/30 hover:border-border/60"
-                }`}
-              >
-                {account.popular && (
-                  <Badge variant="default" className="absolute top-4 right-4 bg-gradient-accent text-primary-foreground shadow-md">
-                    Most Popular
-                  </Badge>
-                )}
-                <CardHeader className="text-center pt-8 pb-4">
-                  <CardTitle className="text-2xl font-bold mb-2">{account.name}</CardTitle>
-                  <CardDescription className="px-4">{account.description}</CardDescription>
-                </CardHeader>
-                <CardContent className="flex-grow p-6 flex flex-col">
-                  <div className="text-center my-4">
-                    <span className="text-5xl font-bold text-primary">{account.price}</span>
-                    <p className="text-sm text-muted-foreground mt-1">Minimum Deposit</p>
-                  </div>
-                  <ul className="space-y-3 text-sm flex-grow my-6">
-                    {account.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
-                        <span className="text-foreground">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Button
-                    className="w-full mt-auto rounded-full font-semibold transition-all duration-300 group-hover:scale-105"
-                    size="lg"
-                    variant={account.popular ? "default" : "outline"}
-                  >
-                    Open Account
-                  </Button>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+          {accounts.map((account) => {
+            const IconComponent = account.icon;
+            return (
+              <motion.div key={account.name} variants={itemVariants} className="h-full">
+                <Card
+                  className={`relative h-full transition-all duration-300 hover:shadow-lg ${
+                    account.popular
+                      ? "border-2 border-primary shadow-lg"
+                      : "border border-border hover:border-primary/50"
+                  }`}
+                >
+                  {account.popular && (
+                    <div className="absolute -top-2 sm:-top-3 left-1/2 transform -translate-x-1/2 z-10">
+                      <Badge className="bg-primary text-white px-3 sm:px-4 py-1 text-xs sm:text-sm font-medium">
+                        Most Popular
+                      </Badge>
+                    </div>
+                  )}
+                  
+                  <CardHeader className="text-center pt-6 sm:pt-8 pb-4 sm:pb-6 px-4 sm:px-6">
+                    <div className="mx-auto mb-3 sm:mb-4 p-2 sm:p-3 rounded-full bg-primary/10 w-fit">
+                      <IconComponent className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
+                    </div>
+                    <CardTitle className="text-xl sm:text-2xl font-bold">{account.name}</CardTitle>
+                    <CardDescription className="text-sm sm:text-base text-muted-foreground">
+                      {account.description}
+                    </CardDescription>
+                  </CardHeader>
+                  
+                  <CardContent className="px-4 sm:px-6 pb-4 sm:pb-6">
+                    <div className="text-center mb-4 sm:mb-6">
+                      <div className="text-3xl sm:text-4xl font-bold text-primary mb-1">{account.price}</div>
+                      <p className="text-xs sm:text-sm text-muted-foreground">Minimum Deposit</p>
+                    </div>
+                    
+                    <ul className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
+                      {account.features.map((feature) => (
+                        <li key={feature} className="flex items-start gap-2 sm:gap-3">
+                          <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 text-primary flex-shrink-0 mt-0.5" />
+                          <span className="text-xs sm:text-sm leading-relaxed">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    
+                    <Button
+                      className={`w-full text-sm sm:text-base ${
+                        account.popular 
+                          ? "bg-primary hover:bg-primary/90" 
+                          : "border-primary text-primary hover:bg-primary hover:text-white"
+                      }`}
+                      variant={account.popular ? "default" : "outline"}
+                      size="sm"
+                    >
+                      {account.popular ? "Get Started" : "Open Account"}
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

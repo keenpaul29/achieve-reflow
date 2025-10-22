@@ -52,13 +52,13 @@ export function LiveRates() {
   const items = [...rates, ...rates, ...rates];
 
   return (
-    <section className="py-20 bg-background relative overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12 animate-fade-up">
-          <h2 className="text-3xl md:text-4xl font-bold">
+    <section className="py-12 sm:py-16 md:py-20 bg-background relative overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8 sm:mb-12 animate-fade-up">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold px-4">
             Live <span className="text-gradient">Market</span> Data
           </h2>
-          <p className="text-md text-muted-foreground max-w-2xl mx-auto mt-2">
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto mt-2 px-4">
             Stay updated with real-time forex rates streaming directly from the global markets.
           </p>
         </div>
@@ -68,14 +68,14 @@ export function LiveRates() {
             className="flex whitespace-nowrap animate-marquee"
           >
             {items.map((r, i) => (
-              <div key={r.pair + '-' + i} className="flex items-center mx-4">
-                <div className="flex items-center p-4 rounded-lg bg-card/50 border border-border/20 min-w-[260px] shadow-sm transition-all duration-300 hover:shadow-md hover:border-primary/50">
+              <div key={r.pair + '-' + i} className="flex items-center mx-2 sm:mx-4">
+                <div className="flex items-center p-3 sm:p-4 rounded-lg bg-card/50 border border-border/20 min-w-[200px] sm:min-w-[260px] shadow-sm transition-all duration-300 hover:shadow-md hover:border-primary/50">
                   <div className="flex-grow">
-                    <div className="text-lg font-bold text-foreground">{r.pair}</div>
-                    <div className="text-xl font-mono text-muted-foreground transition-colors duration-300">{formatValue(r.value)}</div>
+                    <div className="text-sm sm:text-lg font-bold text-foreground">{r.pair}</div>
+                    <div className="text-base sm:text-xl font-mono text-muted-foreground transition-colors duration-300">{formatValue(r.value)}</div>
                   </div>
-                  <div className={`flex items-center text-lg font-semibold ${r.change >= 0 ? 'text-green-500' : 'text-red-500'}`}>
-                    {r.change >= 0 ? <TrendingUp className="w-5 h-5 mr-1" /> : <TrendingDown className="w-5 h-5 mr-1" />}
+                  <div className={`flex items-center text-sm sm:text-lg font-semibold ${r.change >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+                    {r.change >= 0 ? <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 mr-1" /> : <TrendingDown className="w-4 h-4 sm:w-5 sm:h-5 mr-1" />}
                     {Math.abs(r.change)}%
                   </div>
                 </div>
