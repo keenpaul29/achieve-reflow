@@ -216,6 +216,55 @@ const Trading = () => {
           </div>
         </section>
 
+        {/* Platforms Compare */}
+        <section className="py-20 relative">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(28,141,190,0.08),transparent_70%)]" />
+          <div className="container mx-auto px-4 relative">
+            <motion.h2 
+              className="text-4xl font-bold mb-12 text-center text-foreground"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              Account Types
+            </motion.h2>
+            <motion.div 
+              className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {[{
+                n:"Starter", p:"$0", f:["Spreads from 1.2 pips","No commission","Standard support"]
+              },{
+                n:"Professional", p:"$500", f:["Raw spreads","$3 commission","Priority support"]
+              },{
+                n:"Elite", p:"$5,000", f:["Custom leverage","0 commission","Dedicated manager"]
+              }].map((a)=> (
+                <motion.div key={a.n} variants={itemVariants}>
+                  <Card className="bg-card/60 backdrop-blur-sm border border-border/20 hover:shadow-xl transition-all">
+                    <CardHeader>
+                      <CardTitle className="text-2xl text-foreground">{a.n}</CardTitle>
+                      <CardDescription className="text-base">Minimum deposit</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="text-4xl font-bold text-primary">{a.p}</div>
+                      <ul className="space-y-2">
+                        {a.f.map((x)=> (
+                          <li key={x} className="text-sm text-foreground">• {x}</li>
+                        ))}
+                      </ul>
+                      <Button className="w-full">Open {a.n}</Button>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 relative">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(28,141,190,0.1),transparent_70%)]" />

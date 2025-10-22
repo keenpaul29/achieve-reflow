@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Monitor, Smartphone, Globe, CheckCircle2 } from "lucide-react";
+import { ComputerDesktopIcon, DevicePhoneMobileIcon, GlobeAltIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion, AnimatePresence, Variants } from "framer-motion";
+import Image from 'react-image-webp'
 
 export function Platforms() {
   const [activeTab, setActiveTab] = useState("mt5");
@@ -11,7 +12,7 @@ export function Platforms() {
     {
       value: "mt5",
       name: "MetaTrader 5",
-      icon: <Monitor className="w-6 h-6 mr-2" />,
+      icon: <ComputerDesktopIcon className="w-6 h-6 mr-2" />,
       description: "The world's most popular trading platform, offering advanced charting, analysis tools, and automated trading capabilities.",
       features: [
         "Advanced technical analysis tools",
@@ -19,12 +20,12 @@ export function Platforms() {
         "Automated trading with EAs",
         "Real-time market data",
       ],
-      image: "/platforms/metatrader.png"
+      image: <Image webp="/mt5trader.webp" alt="MetaTrader 5" />
     },
     {
       value: "webtrader",
       name: "WebTrader",
-      icon: <Globe className="w-6 h-6 mr-2" />,
+      icon: <GlobeAltIcon className="w-6 h-6 mr-2" />,
       description: "Trade from any browser with our powerful and intuitive web-based platform, no download required.",
       features: [
         "Full trading functionality",
@@ -32,12 +33,12 @@ export function Platforms() {
         "Secure and reliable",
         "User-friendly interface",
       ],
-      image: "/platforms/webtrader.png"
+      image: <Image webp="/webtrader.webp" alt="WebTrader" />
     },
     {
       value: "mobile",
       name: "Mobile App",
-      icon: <Smartphone className="w-6 h-6 mr-2" />,
+      icon: <DevicePhoneMobileIcon className="w-6 h-6 mr-2" />,
       description: "Stay connected to the markets on the go with our fully-featured mobile app for iOS and Android.",
       features: [
         "Trade anytime, anywhere",
@@ -45,7 +46,7 @@ export function Platforms() {
         "Full account management",
         "Interactive charts",
       ],
-      image: "/platforms/mobileapp.png"
+      image: <Image webp={"/mobile_app.webp"} alt="Mobile App" />
     },
   ];
 
@@ -78,7 +79,7 @@ export function Platforms() {
           <TabsList className="relative grid w-full grid-cols-1 sm:grid-cols-3 max-w-2xl mx-auto h-auto p-1 sm:p-2 rounded-xl bg-muted/50">
             {platforms.map((platform) => (
               <TabsTrigger key={platform.value} value={platform.value} className="relative z-10 flex items-center justify-center py-2 sm:py-3 rounded-xl text-xs sm:text-sm font-semibold transition-colors duration-300">
-                <span className="hidden sm:inline">{platform.icon}</span>
+                <span className="hidden sm:inline text-white">{platform.icon}</span>
                 <span className="sm:hidden text-white">{platform.icon}</span>
                 <span className="ml-1 sm:ml-2 text-white">{platform.name}</span>
               </TabsTrigger>
@@ -111,7 +112,7 @@ export function Platforms() {
                             <ul className="space-y-2 sm:space-y-3">
                               {platform.features.map((feature) => (
                                 <li key={feature} className="flex items-center gap-2 sm:gap-3">
-                                  <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
+                                  <CheckCircleIcon className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
                                   <span className="text-sm sm:text-base font-medium">{feature}</span>
                                 </li>
                               ))}
@@ -125,11 +126,7 @@ export function Platforms() {
                             className="bg-card/50 p-3 sm:p-4 rounded-xl sm:rounded-2xl shadow-lg border border-border/20 order-1 lg:order-2"
                             whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
                           >
-                            <img 
-                              src={platform.image} 
-                              alt={platform.name} 
-                              className="rounded-lg sm:rounded-xl w-full h-auto aspect-video object-cover"
-                            />
+                            {platform.image}
                           </motion.div>
                         </div>
                       </CardContent>

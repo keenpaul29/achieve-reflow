@@ -1,10 +1,11 @@
-import { BarChart3, Lock, Smartphone, Headphones, Globe, Wallet, Zap, TrendingUp, Shield, Clock, DollarSign, Users, Target, Activity, Calculator } from "lucide-react";
+import { Lock, Smartphone, Headphones, Globe, Wallet, Zap, TrendingUp, Shield, Clock, DollarSign, Users, Target, Activity, Calculator } from "lucide-react";
+import { ChartBarIcon } from "@heroicons/react/24/outline";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion, Variants } from "framer-motion";
 export function Features() {
   const features = [
     {
-      icon: BarChart3,
+      icon: ChartBarIcon,
       title: "Advanced Charting",
       description: "Professional-grade charts with 100+ technical indicators and drawing tools."
     },

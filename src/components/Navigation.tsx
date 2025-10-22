@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import { MoonIcon, SunIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/ThemeProvider";
 
@@ -66,9 +66,9 @@ export function Navigation() {
               className="rounded-full hover:bg-primary/10"
             >
               {theme === "dark" ? (
-                <Sun className="h-4 w-4 lg:h-5 lg:w-5 text-yellow-400" />
+                <SunIcon className="h-4 w-4 lg:h-5 lg:w-5 text-yellow-400" />
               ) : (
-                <Moon className="h-4 w-4 lg:h-5 lg:w-5 text-gray-700" />
+                <MoonIcon className="h-4 w-4 lg:h-5 lg:w-5 text-gray-700" />
               )}
             </Button>
             <Button variant="ghost" size="sm" className="rounded-full text-gray-400 hover:text-white text-sm lg:text-base">Login</Button>
@@ -84,9 +84,9 @@ export function Navigation() {
               className="rounded-full h-8 w-8 sm:h-10 sm:w-10"
             >
               {theme === "dark" ? (
-                <Sun className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400" />
+                <SunIcon className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400" />
               ) : (
-                <Moon className="h-4 w-4 sm:h-5 sm:w-5 text-gray-700" />
+                <MoonIcon className="h-4 w-4 sm:h-5 sm:w-5 text-gray-700" />
               )}
             </Button>
             <Button
@@ -95,7 +95,7 @@ export function Navigation() {
               onClick={() => setIsOpen(!isOpen)}
               className="rounded-full h-8 w-8 sm:h-10 sm:w-10"
             >
-              {isOpen ? <X className="h-5 w-5 sm:h-6 sm:w-6" /> : <Menu className="h-5 w-5 sm:h-6 sm:w-6" />}
+              {isOpen ? <XMarkIcon className="h-5 w-5 sm:h-6 sm:w-6" /> : <Bars3Icon className="h-5 w-5 sm:h-6 sm:w-6" />}
             </Button>
           </div>
         </div>

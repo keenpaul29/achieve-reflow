@@ -17,7 +17,8 @@ const NotFound = () => {
       <Navigation />
       
       <main className="flex-grow flex items-center justify-center">
-        <div className="text-center py-20">
+        <div className="text-center py-20 relative">
+          <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(28,141,190,0.08),transparent_70%)]" />
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}

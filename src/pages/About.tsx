@@ -219,6 +219,77 @@ const About = () => {
             </motion.div>
           </div>
         </section>
+
+        {/* Team Section */}
+        <section className="py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(28,141,190,0.08),transparent_70%)]" />
+          <div className="container mx-auto px-4 relative">
+            <motion.h2 
+              className="text-4xl font-bold mb-12 text-center text-foreground"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              Leadership Team
+            </motion.h2>
+            <motion.div 
+              className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {["Demo Name 1","Demo Name 2","Demo Name 3","Demo Name 4"].map((name, i) => (
+                <motion.div key={name} variants={itemVariants}>
+                  <Card className="bg-card/60 backdrop-blur-sm border border-border/20 hover:shadow-xl transition-all duration-300">
+                    <CardContent className="pt-6">
+                      <div className="w-24 h-24 rounded-full mx-auto mb-4 bg-gradient-to-br from-primary/20 to-accent/20 border border-border/30" />
+                      <div className="text-center">
+                        <p className="font-semibold text-foreground">{name}</p>
+                        <p className="text-sm text-muted-foreground">{["Position 1","Position 2","Position 3","Position 4"][i]}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Compliance & Security Section */}
+        <section className="py-20 bg-muted/30 relative">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(28,141,190,0.08),transparent_70%)]" />
+          <div className="container mx-auto px-4 relative">
+            <motion.div 
+              className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {[{
+                t:"Regulation",
+                d:"Operating under strict AML/KYC policies with routine audits."
+              },{
+                t:"Fund Safety",
+                d:"Client funds held in segregated tier‑1 bank accounts."
+              },{
+                t:"Data Protection",
+                d:"TLS 1.3 encryption, hardware security modules, and 2FA."
+              }].map((b)=> (
+                <motion.div key={b.t} variants={itemVariants}>
+                  <Card className="bg-card/60 backdrop-blur-sm border border-border/20">
+                    <CardContent className="pt-6">
+                      <h3 className="text-xl font-bold mb-2 text-foreground">{b.t}</h3>
+                      <p className="text-muted-foreground">{b.d}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
       </main>
 
       <Footer />

@@ -1,4 +1,4 @@
-import { CheckCircle2, Star, Zap, Crown } from "lucide-react";
+import { CheckCircleIcon, StarIcon, BoltIcon, AcademicCapIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -18,7 +18,7 @@ export function TradingAccounts() {
         "Educational webinars"
       ],
       popular: false,
-      icon: Star,
+      icon: StarIcon,
       gradient: "from-blue-500/20 to-cyan-500/20"
     },
     {
@@ -33,7 +33,7 @@ export function TradingAccounts() {
         "Advanced trading tools"
       ],
       popular: true,
-      icon: Zap,
+      icon: BoltIcon,
       gradient: "from-primary/30 to-primary/10"
     },
     {
@@ -48,7 +48,7 @@ export function TradingAccounts() {
         "Exclusive event invitations"
       ],
       popular: false,
-      icon: Crown,
+      icon: AcademicCapIcon,
       gradient: "from-amber-500/20 to-orange-500/20"
     }
   ];
@@ -69,6 +69,7 @@ export function TradingAccounts() {
   return (
     <section className="py-12 sm:py-16 md:py-20 bg-background relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        
         <motion.div 
           className="text-center mb-12 sm:mb-16"
           initial={{ opacity: 0, y: -20 }}
@@ -129,7 +130,7 @@ export function TradingAccounts() {
                     <ul className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
                       {account.features.map((feature) => (
                         <li key={feature} className="flex items-start gap-2 sm:gap-3">
-                          <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 text-primary flex-shrink-0 mt-0.5" />
+                          <CheckCircleIcon className="h-3 w-3 sm:h-4 sm:w-4 text-primary flex-shrink-0 mt-0.5" />
                           <span className="text-xs sm:text-sm leading-relaxed">{feature}</span>
                         </li>
                       ))}

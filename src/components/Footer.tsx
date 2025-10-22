@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { FacebookIcon, TwitterIcon, LinkedinIcon, InstagramIcon } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
 
 export function Footer() {
@@ -8,9 +8,9 @@ export function Footer() {
   const footerLinks = {
     Company: [
       { name: "About Us", path: "/about" },
-      { name: "Careers", path: "#" },
-      { name: "Press", path: "#" },
-      { name: "Blog", path: "#" }
+      // { name: "Careers", path: "/careers" },
+      { name: "Press", path: "/press" },
+      { name: "Blog", path: "/blog" }
     ],
     Trading: [
       { name: "Forex", path: "/trading" },
@@ -19,24 +19,24 @@ export function Footer() {
       { name: "Crypto", path: "/trading" }
     ],
     Support: [
-      { name: "Help Center", path: "#" },
+      { name: "Help Center", path: "/help" },
       { name: "Contact Us", path: "/contact" },
-      { name: "Status", path: "#" },
-      { name: "FAQ", path: "#" }
+      { name: "Status", path: "/status" },
+      { name: "FAQ", path: "/faq" }
     ],
     Legal: [
-      { name: "Privacy Policy", path: "#" },
-      { name: "Terms of Service", path: "#" },
-      { name: "Cookie Policy", path: "#" },
-      { name: "Disclaimer", path: "#" }
+      { name: "Privacy Policy", path: "/privacy" },
+      { name: "Terms of Service", path: "/terms" },
+      { name: "Cookie Policy", path: "/cookies" },
+      { name: "Disclaimer", path: "/disclaimer" }
     ]
   };
 
   const socialLinks = [
-    { icon: <Facebook size={20} />, href: "#" },
-    { icon: <Twitter size={20} />, href: "#" },
-    { icon: <Linkedin size={20} />, href: "#" },
-    { icon: <Instagram size={20} />, href: "#" },
+    { icon: <FacebookIcon size={20} />, href: "#" },
+    { icon: <TwitterIcon size={20} />, href: "#" },
+    { icon: <LinkedinIcon size={20} />, href: "#" },
+    { icon: <InstagramIcon size={20} />, href: "#" },
   ];
 
   return (

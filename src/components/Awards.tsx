@@ -1,4 +1,4 @@
-import { Trophy, Award, Star, Crown } from "lucide-react";
+import { TrophyIcon, AcademicCapIcon, StarIcon } from "@heroicons/react/24/outline";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
 
@@ -8,28 +8,28 @@ export function Awards() {
       title: "Best Forex Broker",
       year: "2023",
       issuer: "Global Forex Awards",
-      icon: Trophy,
+      icon: TrophyIcon,
       variant: "primary",
     },
     {
       title: "Most Transparent Broker",
       year: "2023", 
       issuer: "World Finance Awards",
-      icon: Award,
+      icon: TrophyIcon,
       variant: "primary",
     },
     {
       title: "Best Trading Platform",
       year: "2023",
       issuer: "Forex Expo Dubai", 
-      icon: Star,
+      icon: TrophyIcon,
       variant: "accent",
     },
     {
       title: "Top CFD Broker",
       year: "2023",
       issuer: "International Business Magazine",
-      icon: Crown,
+      icon: TrophyIcon,
       variant: "primary",
     },
   ];
@@ -91,7 +91,7 @@ export function Awards() {
           transition={{ duration: 0.8 }}
         >
           <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-semibold mb-4 sm:mb-6 border border-primary/20">
-            <Trophy className="w-3 h-3 sm:w-4 sm:h-4" />
+            <TrophyIcon className="w-3 h-3 sm:w-4 sm:h-4" />
             Industry Recognition
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 px-4">

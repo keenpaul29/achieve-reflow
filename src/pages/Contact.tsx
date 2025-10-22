@@ -291,6 +291,31 @@ const Contact = () => {
             </motion.div>
           </div>
         </section>
+
+        {/* Map / Offices */}
+        <section className="py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(28,141,190,0.08),transparent_70%)]" />
+          <div className="container mx-auto px-4 relative">
+            <motion.h2 
+              className="text-4xl font-bold mb-8 text-center text-foreground"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              Our Offices
+            </motion.h2>
+            <div className="max-w-5xl mx-auto">
+              <Card className="overflow-hidden border border-border/20 bg-card/60 backdrop-blur-sm">
+                <CardContent className="p-0">
+                  <div className="aspect-video w-full bg-muted flex items-center justify-center text-muted-foreground">
+                    Map placeholder
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
       </main>
 
       <Footer />

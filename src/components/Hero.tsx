@@ -1,4 +1,4 @@
-import { ArrowRight, TrendingUp, Shield, Zap } from "lucide-react";
+import { ArrowRightIcon, ArrowTrendingUpIcon, ShieldCheckIcon, BoltIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
@@ -6,9 +6,9 @@ import { useRef } from "react";
 
 export function Hero() {
   const features = [
-    { icon: TrendingUp, text: "Advanced Analytics" },
-    { icon: Shield, text: "Secure Trading" },
-    { icon: Zap, text: "Instant Execution" },
+    { icon: ArrowTrendingUpIcon, text: "Advanced Analytics" },
+    { icon: ShieldCheckIcon, text: "Secure Trading" },
+    { icon: BoltIcon, text: "Instant Execution" },
   ];
 
   const marketRows = [
@@ -33,9 +33,11 @@ export function Hero() {
         muted 
         loop 
         playsInline
-      >
-        <source src="/hero_video.mp4" type="video/mp4" />
-      </video>
+        disablePictureInPicture = {true}
+        src="/hero_video.mp4"
+      />
+        {/* <source src="/hero_video.mp4" type="video/mp4" /> */}
+      
 
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/20 z-10" />
 
@@ -67,7 +69,7 @@ export function Hero() {
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 px-4">
             <Button size="lg" className="group shadow-lg shadow-primary/30 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold w-full sm:w-auto">
               Start Trading Now
-              <ArrowRight className="ml-2 sm:ml-3 h-5 w-5 sm:h-6 sm:w-6 transition-transform group-hover:translate-x-1.5" />
+              <ArrowRightIcon className="ml-2 sm:ml-3 h-5 w-5 sm:h-6 sm:w-6 transition-transform group-hover:translate-x-1.5" />
             </Button>
             <Button 
               size="lg" 

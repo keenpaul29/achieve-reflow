@@ -1,20 +1,20 @@
-import { Briefcase, DollarSign, TrendingUp } from "lucide-react";
+import { BriefcaseIcon, CurrencyDollarIcon, ArrowTrendingUpIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 
 export function HowItWorks() {
   const steps = [
     {
-      icon: Briefcase,
+      icon: BriefcaseIcon,
       title: "Register & Verify",
       desc: "Complete our simple and secure registration process to create your trading account.",
     },
     {
-      icon: DollarSign,
+      icon: CurrencyDollarIcon,
       title: "Fund Your Account",
       desc: "Choose from a variety of convenient payment methods to deposit funds.",
     },
     {
-      icon: TrendingUp,
+      icon: ArrowTrendingUpIcon,
       title: "Start Trading",
       desc: "Access global markets and start trading with our advanced platforms and tools.",
     },

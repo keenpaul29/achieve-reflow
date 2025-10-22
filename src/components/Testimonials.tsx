@@ -1,4 +1,4 @@
-import { Star, Quote } from "lucide-react";
+import { StarIcon, ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
@@ -66,7 +66,7 @@ export function Testimonials() {
                 <div className="p-1 h-full">
                   <Card className="flex flex-col h-full bg-card/60 backdrop-blur-lg border border-border/30 rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-primary/50 group">
                     <CardContent className="p-4 sm:p-6 lg:p-8 flex flex-col flex-grow">
-                      <Quote className="w-8 h-8 sm:w-10 sm:h-10 text-primary/50 mb-3 sm:mb-4 transition-transform duration-300 group-hover:scale-110" />
+                      <ChatBubbleLeftRightIcon className="w-8 h-8 sm:w-10 sm:h-10 text-primary/50 mb-3 sm:mb-4 transition-transform duration-300 group-hover:scale-110" />
                       <p className="text-sm sm:text-base text-foreground flex-grow mb-4 sm:mb-6">"{q.text}"</p>
                       <div className="flex items-center mt-auto">
                         <Avatar className="h-10 w-10 sm:h-12 sm:w-12 mr-3 sm:mr-4 transition-transform duration-300 group-hover:scale-105">
@@ -78,7 +78,7 @@ export function Testimonials() {
                         </div>
                         <div className="flex items-center">
                           <span className="text-sm sm:text-base font-bold text-yellow-400 mr-1">{q.rating}</span>
-                          <Star className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current" />
+                          <StarIcon className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current" />
                         </div>
                       </div>
                     </CardContent>
