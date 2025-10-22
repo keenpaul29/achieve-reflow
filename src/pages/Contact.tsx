@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
@@ -6,13 +7,41 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { motion } from "framer-motion";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Form submission logic would go here
+    console.log("Form submitted:", formData);
+    // Reset form after submission
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      subject: "",
+      message: ""
+    });
+  };
+
   const contactInfo = [
     {
       icon: Mail,
       title: "Email Us",
-      content: "support@vwalbot.com",
+      content: "support@Wwallbot.com",
       description: "We'll respond within 24 hours"
     },
     {
@@ -35,103 +64,202 @@ const Contact = () => {
     }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
       
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-primary/5 via-transparent to-accent/5">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center animate-fade-up">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6">
+        <section className="py-20 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(28,141,190,0.1),transparent_70%)]" />
+          <div className="container mx-auto px-4 relative">
+            <motion.div 
+              className="max-w-3xl mx-auto text-center"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <motion.h1 
+                className="text-5xl md:text-6xl font-bold mb-6"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+              >
                 Get in Touch
-              </h1>
-              <p className="text-xl text-muted-foreground">
+              </motion.h1>
+              <motion.p 
+                className="text-xl text-muted-foreground"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+              >
                 Have questions? Our team is here to help you succeed. 
                 Reach out anytime and we'll get back to you as soon as possible.
-              </p>
-            </div>
+              </motion.p>
+            </motion.div>
           </div>
         </section>
 
         {/* Contact Info Cards */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {contactInfo.map((info, index) => (
-                <Card 
-                  key={info.title}
-                  className="text-center animate-fade-up"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <CardContent className="pt-6">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                      <info.icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <h3 className="font-semibold mb-2">{info.title}</h3>
-                    <p className="text-foreground font-medium mb-1">{info.content}</p>
-                    <p className="text-sm text-muted-foreground">{info.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+        <section className="py-20 relative">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(28,141,190,0.08),transparent_70%)]" />
+          <div className="container mx-auto px-4 relative">
+            <motion.div 
+              className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {contactInfo.map((info, index) => {
+                const Icon = info.icon;
+                return (
+                  <motion.div key={info.title} variants={itemVariants}>
+                    <Card className="text-center bg-card/60 backdrop-blur-sm border border-border/20 hover:shadow-lg transition-all duration-300 group">
+                      <CardContent className="pt-6">
+                        <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:scale-110">
+                          <Icon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:rotate-12" />
+                        </div>
+                        <h3 className="font-semibold mb-2 text-foreground">{info.title}</h3>
+                        <p className="text-foreground font-medium mb-1">{info.content}</p>
+                        <p className="text-sm text-muted-foreground">{info.description}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
 
             {/* Contact Form */}
             <div className="max-w-2xl mx-auto">
-              <Card>
-                <CardContent className="pt-6">
-                  <form className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <Label htmlFor="firstName">First Name</Label>
-                        <Input id="firstName" placeholder="John" />
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <Card className="bg-card/60 backdrop-blur-sm border border-border/20">
+                  <CardContent className="pt-6">
+                    <form className="space-y-6" onSubmit={handleSubmit}>
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <Label htmlFor="firstName">First Name</Label>
+                          <Input 
+                            id="firstName" 
+                            placeholder="John" 
+                            value={formData.firstName}
+                            onChange={handleInputChange}
+                            className="bg-background/50 border-border/30"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="lastName">Last Name</Label>
+                          <Input 
+                            id="lastName" 
+                            placeholder="Doe" 
+                            value={formData.lastName}
+                            onChange={handleInputChange}
+                            className="bg-background/50 border-border/30"
+                          />
+                        </div>
                       </div>
+
                       <div className="space-y-2">
-                        <Label htmlFor="lastName">Last Name</Label>
-                        <Input id="lastName" placeholder="Doe" />
+                        <Label htmlFor="email">Email</Label>
+                        <Input 
+                          id="email" 
+                          type="email" 
+                          placeholder="john@example.com" 
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          className="bg-background/50 border-border/30"
+                        />
                       </div>
-                    </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
-                      <Input id="email" type="email" placeholder="john@example.com" />
-                    </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="subject">Subject</Label>
+                        <Input 
+                          id="subject" 
+                          placeholder="How can we help?" 
+                          value={formData.subject}
+                          onChange={handleInputChange}
+                          className="bg-background/50 border-border/30"
+                        />
+                      </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="subject">Subject</Label>
-                      <Input id="subject" placeholder="How can we help?" />
-                    </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="message">Message</Label>
+                        <Textarea 
+                          id="message" 
+                          placeholder="Tell us more about your inquiry..."
+                          rows={6}
+                          value={formData.message}
+                          onChange={handleInputChange}
+                          className="bg-background/50 border-border/30"
+                        />
+                      </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Message</Label>
-                      <Textarea 
-                        id="message" 
-                        placeholder="Tell us more about your inquiry..."
-                        rows={6}
-                      />
-                    </div>
+                      <Button type="submit" className="w-full" size="lg">
+                        Send Message
+                      </Button>
+                    </form>
+                  </CardContent>
+                </Card>
+              </motion.div>
 
-                    <Button type="submit" className="w-full" size="lg">
-                      Send Message
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-
-              <p className="text-center text-sm text-muted-foreground mt-6">
+              <motion.p 
+                className="text-center text-sm text-muted-foreground mt-6"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+              >
                 By submitting this form, you agree to our Privacy Policy and Terms of Service.
-              </p>
+              </motion.p>
             </div>
           </div>
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20 bg-muted/30">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
-              <div className="space-y-4">
+        <section className="py-20 bg-muted/30 relative">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(28,141,190,0.08),transparent_70%)]" />
+          <div className="container mx-auto px-4 relative">
+            <motion.div 
+              className="max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl font-bold mb-8 text-center text-foreground">Frequently Asked Questions</h2>
+              <motion.div 
+                className="space-y-4"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+              >
                 {[
                   {
                     q: "How long does it take to open an account?",
@@ -150,15 +278,17 @@ const Contact = () => {
                     a: "Yes, you can withdraw your funds at any time. Withdrawal requests are typically processed within 24 hours on business days."
                   }
                 ].map((faq, index) => (
-                  <Card key={index} className="animate-fade-up" style={{ animationDelay: `${index * 100}ms` }}>
-                    <CardContent className="pt-6">
-                      <h3 className="font-semibold mb-2">{faq.q}</h3>
-                      <p className="text-muted-foreground">{faq.a}</p>
-                    </CardContent>
-                  </Card>
+                  <motion.div key={index} variants={itemVariants}>
+                    <Card className="bg-card/60 backdrop-blur-sm border border-border/20 hover:shadow-lg transition-all duration-300">
+                      <CardContent className="pt-6">
+                        <h3 className="font-semibold mb-2 text-foreground">{faq.q}</h3>
+                        <p className="text-muted-foreground">{faq.a}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </section>
       </main>

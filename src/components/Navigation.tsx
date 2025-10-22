@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,6 +9,15 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const location = useLocation();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -20,27 +29,27 @@ export function Navigation() {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-lg border-b border-border">
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-background/95 backdrop-blur-lg border-b border-border/80 shadow-md" : "bg-transparent"}`}>
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-24">
+        <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? "h-16" : "h-20"}`}>
           <Link to="/" className="flex items-center space-x-2 group">
             <img 
-              src={theme === "dark" ? '/logo-light.png' : '/logo-dark.png'} 
-              alt="Achieve Reflow" 
-              className="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
+              src={'/logo-light.png'} 
+              alt="Wwallbot" 
+              className={`transition-all duration-300 group-hover:scale-105 ${isScrolled ? "h-10" : "h-12"} w-auto`}
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-2 bg-secondary/50 p-2 rounded-full">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`text-lg font-semibold transition-colors duration-300 ${
+                className={`text-sm font-semibold transition-all duration-300 px-4 py-2 rounded-full ${
                   isActive(item.path)
-                    ? "text-primary"
-                    : "text-foreground hover:text-primary"
+                    ? "bg-primary text-primary-foreground shadow-md"
+                    : "text-foreground hover:bg-primary/10"
                 }`}
               >
                 {item.name}
@@ -53,16 +62,16 @@ export function Navigation() {
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="rounded-full"
+              className="rounded-full hover:bg-primary/10"
             >
               {theme === "dark" ? (
-                <Sun className="h-5 w-5" />
+                <Sun className="h-5 w-5 text-yellow-400" />
               ) : (
-                <Moon className="h-5 w-5" />
+                <Moon className="h-5 w-5 text-gray-700" />
               )}
             </Button>
-            <Button variant="outline" size="sm">Login</Button>
-            <Button size="sm">Open Account</Button>
+            <Button variant="outline" size="sm" className="rounded-full">Login</Button>
+            <Button size="sm" className="rounded-full glow-border">Start A New Account</Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -71,17 +80,19 @@ export function Navigation() {
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="rounded-full"
             >
               {theme === "dark" ? (
-                <Sun className="h-5 w-5" />
+                <Sun className="h-5 w-5 text-yellow-400" />
               ) : (
-                <Moon className="h-5 w-5" />
+                <Moon className="h-5 w-5 text-gray-700" />
               )}
             </Button>
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(!isOpen)}
+              className="rounded-full"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
@@ -90,23 +101,23 @@ export function Navigation() {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden py-4 animate-fade-in">
-            <div className="flex flex-col space-y-4">
+          <div className="md:hidden pb-4 animate-accordion-down">
+            <div className="flex flex-col space-y-2 bg-secondary/80 p-4 rounded-lg">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={`text-sm font-medium transition-colors hover:text-primary ${
-                    isActive(item.path) ? "text-primary" : "text-muted-foreground"
+                  className={`text-base font-medium transition-colors p-3 rounded-md ${
+                    isActive(item.path) ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-primary/10"
                   }`}
                 >
                   {item.name}
                 </Link>
               ))}
-              <div className="flex flex-col space-y-3 pt-4">
-                <Button variant="outline" className="w-full">Login</Button>
-                <Button className="w-full">Open Account</Button>
+              <div className="flex items-center space-x-3 pt-4">
+                <Button variant="outline" className="w-full rounded-full">Login</Button>
+                <Button className="w-full rounded-full glow-border">Open Account</Button>
               </div>
             </div>
           </div>

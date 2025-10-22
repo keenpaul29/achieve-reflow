@@ -14,7 +14,7 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider defaultTheme="dark" storageKey="vwalbot-ui-theme">
+    <ThemeProvider defaultTheme="dark" storageKey="Wwallbot-ui-theme">
       <TooltipProvider>
         <Toaster />
         <Sonner />
