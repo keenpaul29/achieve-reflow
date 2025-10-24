@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { MoonIcon, SunIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
+import { AnimatedThemeToggler } from "@/components/AnimatedThemeToggler";
 import { useTheme } from "@/components/ThemeProvider";
 
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme(); // Keep theme for logo logic
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -34,7 +35,7 @@ export function Navigation() {
         <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? "h-14 sm:h-16" : "h-16 sm:h-20"}`}>
           <Link to="/" className="flex items-center space-x-2 group">
             <img 
-              src={(isScrolled && theme === "light") ? '/logo-dark.png' : '/logo-light.png'} 
+              src={(theme == "dark") ? '/logo-light.png' : ((isScrolled) ? '/logo-dark.png' : '/logo-light.png')} 
               alt="Wwallbot" 
               className={`transition-all duration-300 group-hover:scale-105 ${isScrolled ? "h-8 sm:h-10" : "h-10 sm:h-12"} w-auto`}
             />
@@ -59,36 +60,14 @@ export function Navigation() {
           
           {/* Theme toggle */}
           <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="rounded-full hover:bg-primary/10"
-            >
-              {theme === "dark" ? (
-                <SunIcon className="h-4 w-4 lg:h-5 lg:w-5 text-yellow-400" />
-              ) : (
-                <MoonIcon className="h-4 w-4 lg:h-5 lg:w-5 text-gray-700" />
-              )}
-            </Button>
+            <AnimatedThemeToggler className="rounded-full hover:bg-primary/10" />
             <Button variant="ghost" size="sm" className="rounded-full text-gray-400 hover:text-white text-sm lg:text-base">Login</Button>
             <Button size="sm" className="rounded-full glow-border text-sm lg:text-base">Start A New Account</Button>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-1 sm:space-x-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="rounded-full h-8 w-8 sm:h-10 sm:w-10"
-            >
-              {theme === "dark" ? (
-                <SunIcon className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400" />
-              ) : (
-                <MoonIcon className="h-4 w-4 sm:h-5 sm:w-5 text-gray-700" />
-              )}
-            </Button>
+            <AnimatedThemeToggler className="rounded-full h-8 w-8 sm:h-10 sm:w-10" />
             <Button
               variant="ghost"
               size="icon"
@@ -117,6 +96,7 @@ export function Navigation() {
                 </Link>
               ))}
               <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-3 pt-3 sm:pt-4">
+                <AnimatedThemeToggler />
                 <Button variant="outline" className="w-full rounded-full text-sm sm:text-base">Login</Button>
                 <Button className="w-full rounded-full glow-border text-sm sm:text-base">Open Account</Button>
               </div>
@@ -127,3 +107,4 @@ export function Navigation() {
     </nav>
   );
 }
+

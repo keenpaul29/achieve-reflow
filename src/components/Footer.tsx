@@ -27,7 +27,7 @@ export function Footer() {
     Legal: [
       { name: "Privacy Policy", path: "/privacy" },
       { name: "Terms of Service", path: "/terms" },
-      { name: "Cookie Policy", path: "/cookies" },
+      // { name: "Cookie Policy", path: "/cookies" },
       { name: "Disclaimer", path: "/disclaimer" }
     ]
   };

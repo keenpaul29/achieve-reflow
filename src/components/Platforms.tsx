@@ -5,9 +5,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import Image from 'react-image-webp'
+import { useTheme } from "@/components/ThemeProvider";
 
 export function Platforms() {
   const [activeTab, setActiveTab] = useState("mt5");
+  const { theme } = useTheme();
   const platforms = [
     {
       value: "mt5",
@@ -79,9 +81,9 @@ export function Platforms() {
           <TabsList className="relative grid w-full grid-cols-1 sm:grid-cols-3 max-w-2xl mx-auto h-auto p-1 sm:p-2 rounded-xl bg-muted/50">
             {platforms.map((platform) => (
               <TabsTrigger key={platform.value} value={platform.value} className="relative z-10 flex items-center justify-center py-2 sm:py-3 rounded-xl text-xs sm:text-sm font-semibold transition-colors duration-300">
-                <span className="hidden sm:inline text-white">{platform.icon}</span>
-                <span className="sm:hidden text-white">{platform.icon}</span>
-                <span className="ml-1 sm:ml-2 text-white">{platform.name}</span>
+                <span className="hidden sm:inline">{platform.icon}</span>
+                <span className="inline-block sm:hidden">{platform.icon}</span>
+                <span className="ml-1 sm:ml-2">{platform.name}</span>
               </TabsTrigger>
             ))}
             <motion.div

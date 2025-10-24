@@ -11,7 +11,7 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Privacy from "./pages/footer/Privacy";
 import Terms from "./pages/footer/Terms";
-import Cookies from "./pages/footer/Cookies";
+// import Cookies from "./pages/footer/Cookies";
 import Disclaimer from "./pages/footer/Disclaimer";
 import Help from "./pages/footer/Help";
 import FAQ from "./pages/footer/FAQ";
@@ -36,7 +36,7 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
-            <Route path="/cookies" element={<Cookies />} />
+            {/* <Route path="/cookies" element={<Cookies />} /> */}
             <Route path="/disclaimer" element={<Disclaimer />} />
             <Route path="/help" element={<Help />} />
             <Route path="/faq" element={<FAQ />} />
