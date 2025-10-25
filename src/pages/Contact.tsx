@@ -308,8 +308,17 @@ const Contact = () => {
             <div className="max-w-5xl mx-auto">
               <Card className="overflow-hidden border border-border/20 bg-card/60 backdrop-blur-sm">
                 <CardContent className="p-0">
-                  <div className="aspect-video w-full bg-muted flex items-center justify-center text-muted-foreground">
-                    Map placeholder
+                  <div className="aspect-[16/10] w-full">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9933.460422579!2d-0.1276474!3d51.5073509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b2f2c6b7c3d:0x2c8b0b0b0b0b0b0b!2sLondon%2C%20UK!5e0!3m2!1sen!2s!4v1690000000000!5m2!1sen!2s&markers=51.5014,-0.1419&markers=51.5055,-0.0754&markers=51.5054,-0.0235"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="London Office Locations"
+                    ></iframe>
                   </div>
                 </CardContent>
               </Card>

@@ -8,6 +8,9 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import Trading from "./pages/Trading";
 import Contact from "./pages/Contact";
+import MT5 from "./pages/MT5";
+import WebTrader from "./pages/WebTrader";
+import MobileApp from "./pages/MobileApp";
 import NotFound from "./pages/NotFound";
 import Privacy from "./pages/footer/Privacy";
 import Terms from "./pages/footer/Terms";
@@ -34,6 +37,9 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/trading" element={<Trading />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/mt5" element={<MT5 />} />
+            <Route path="/webtrader" element={<WebTrader />} />
+            <Route path="/mobile-app" element={<MobileApp />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
             {/* <Route path="/cookies" element={<Cookies />} /> */}

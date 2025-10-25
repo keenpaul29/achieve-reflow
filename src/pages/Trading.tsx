@@ -4,6 +4,7 @@ import { DollarSign, TrendingUp, Coins, LineChart } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { Navigate } from "react-router-dom";
 
 const Trading = () => {
   const markets = [
@@ -106,7 +107,7 @@ const Trading = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
               >
-                <Button size="lg" className="group">
+                <Button size="lg" className="group" onClick={() => window.location.href = "https://client.wwallbot.com/accounts/signUp"}>
                   Start Trading Now
                   <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </Button>
@@ -256,7 +257,7 @@ const Trading = () => {
                           <li key={x} className="text-sm text-foreground">• {x}</li>
                         ))}
                       </ul>
-                      <Button className="w-full">Open {a.n}</Button>
+                      <Button className="w-full" onClick={() => window.location.href = "https://client.wwallbot.com/accounts/signUp"}>Open {a.n}</Button>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -301,11 +302,11 @@ const Trading = () => {
                   viewport={{ once: true }}
                   transition={{ delay: 0.3, duration: 0.6 }}
                 >
-                  <Button size="lg" className="group">
+                  <Button size="lg" className="group" onClick={() => window.location.href = "https://client.wwallbot.com/accounts/signUp"}>
                     Create Account
                     <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">→</span>
                   </Button>
-                  <Button size="lg" variant="outline" className="border-2 border-border/30 hover:bg-primary/10">
+                  <Button size="lg" variant="outline" className="border-2 border-border/30 hover:bg-primary/10" onClick={()=>window.location.href = "https://client.wwallbot.com/accounts/signUp"}>
                     Try Demo Account
                   </Button>
                 </motion.div>

@@ -144,6 +144,7 @@ export function TradingAccounts() {
                       }`}
                       variant={account.popular ? "default" : "outline"}
                       size="sm"
+                      onClick={() => window.location.href = "https://client.wwallbot.com/accounts/signUp"}
                     >
                       {account.popular ? "Get Started" : "Open Account"}
                     </Button>

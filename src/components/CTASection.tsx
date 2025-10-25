@@ -16,10 +16,10 @@ export function CTASection() {
               Join thousands of traders who trust Wwallbot for its reliability, advanced tools, and exceptional support. Open your account today and unlock your trading potential.
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4">
-              <Button size="lg" className="rounded-full font-semibold group glow-border animate-pulse-subtle w-full sm:w-auto">
+              <Button size="lg" className="rounded-full font-semibold group glow-border animate-pulse-subtle w-full sm:w-auto" onClick={() => window.location.href = "https://client.wwallbot.com/accounts/signUp"}>
                 Open Live Account <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 transition-transform group-hover:translate-x-1" />
               </Button>
-              <Button size="lg" variant="outline" className="rounded-full font-semibold bg-transparent border-2 border-white/50 hover:bg-white/10 hover:border-white w-full sm:w-auto">
+              <Button size="lg" variant="outline" className="rounded-full font-semibold bg-transparent border-2 border-white/50 hover:bg-white/10 hover:border-white w-full sm:w-auto" onClick={() => window.location.href = "https://client.wwallbot.com/accounts/signIn"}>
                 Try Free Demo
               </Button>
             </div>

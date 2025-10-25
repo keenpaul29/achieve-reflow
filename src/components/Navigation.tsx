@@ -61,8 +61,8 @@ export function Navigation() {
           {/* Theme toggle */}
           <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
             <AnimatedThemeToggler className="rounded-full hover:bg-primary/10" />
-            <Button variant="ghost" size="sm" className="rounded-full text-gray-400 hover:text-white text-sm lg:text-base">Login</Button>
-            <Button size="sm" className="rounded-full glow-border text-sm lg:text-base">Start A New Account</Button>
+            <Button variant="ghost" size="sm" className="rounded-full text-gray-400 hover:text-white text-sm lg:text-base" onClick={() => window.location.href = "https://client.wwallbot.com/accounts/signIn"}>Login</Button>
+            <Button size="sm" className="rounded-full glow-border text-sm lg:text-base" onClick={() => window.location.href = "https://client.wwallbot.com/accounts/signUp"}>Start A New Account</Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -97,8 +97,8 @@ export function Navigation() {
               ))}
               <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-3 pt-3 sm:pt-4">
                 <AnimatedThemeToggler />
-                <Button variant="outline" className="w-full rounded-full text-sm sm:text-base">Login</Button>
-                <Button className="w-full rounded-full glow-border text-sm sm:text-base">Open Account</Button>
+                <Button variant="outline" className="w-full rounded-full text-sm sm:text-base" onClick={() => window.location.href = "https://client.wwallbot.com/accounts/signIn"}>Login</Button>
+                <Button className="w-full rounded-full glow-border text-sm sm:text-base" onClick={() => window.location.href = "https://client.wwallbot.com/accounts/signUp"}>Open Account</Button>
               </div>
             </div>
           </div>

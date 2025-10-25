@@ -67,7 +67,7 @@ export function Hero() {
           </p>
 
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 px-4">
-            <Button size="lg" className="group shadow-lg shadow-primary/30 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold w-full sm:w-auto">
+            <Button size="lg" className="group shadow-lg shadow-primary/30 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold w-full sm:w-auto" onClick={() => window.location.href = "https://client.wwallbot.com/accounts/signUp"}>
               Start Trading Now
               <ArrowRightIcon className="ml-2 sm:ml-3 h-5 w-5 sm:h-6 sm:w-6 transition-transform group-hover:translate-x-1.5" />
             </Button>

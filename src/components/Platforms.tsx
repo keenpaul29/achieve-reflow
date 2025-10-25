@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ComputerDesktopIcon, DevicePhoneMobileIcon, GlobeAltIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -10,6 +11,7 @@ import { useTheme } from "@/components/ThemeProvider";
 export function Platforms() {
   const [activeTab, setActiveTab] = useState("mt5");
   const { theme } = useTheme();
+  const navigate = useNavigate();
   const platforms = [
     {
       value: "mt5",
@@ -119,7 +121,15 @@ export function Platforms() {
                                 </li>
                               ))}
                             </ul>
-                            <Button size="lg" className="rounded-full font-semibold group w-full sm:w-auto">
+                            <Button
+                              size="lg"
+                              className="rounded-full font-semibold group w-full sm:w-auto"
+                              onClick={() => {
+                                if (activeTab === "mt5") navigate("/mt5");
+                                else if (activeTab === "webtrader") navigate("/webtrader");
+                                else if (activeTab === "mobile") navigate("/mobile-app");
+                              }}
+                            >
                               Learn More
                               <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
                             </Button>
